@@ -8,8 +8,8 @@ import { Cliente } from './cliente';
 })
 export class FormComponent implements OnInit {
 
-  private cliente: Cliente = new Cliente();
-  private titulo = 'Creat cliente';
+  protected cliente: Cliente = new Cliente();
+  protected titulo = 'Creat cliente';
 
   constructor() { }
 
