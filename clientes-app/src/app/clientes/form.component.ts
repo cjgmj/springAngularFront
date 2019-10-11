@@ -33,7 +33,7 @@ export class FormComponent implements OnInit {
   create(): void {
     this.clienteService.create(this.cliente).subscribe(response => {
         this.router.navigate(['/clientes']);
-        swal.fire('Cliente guardado', `El cliente ${response.nombre} se ha creado con éxito`, 'success');
+        swal.fire('Cliente guardado', `${response.mensaje}: ${response.cliente.nombre}`, 'success');
       }
     );
   }
