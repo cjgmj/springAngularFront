@@ -9,9 +9,8 @@
             <div class="form-group row">
                 <label for="nombre" class="col-form-label col-sm-2">Nombre </label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="cliente.nombre" name="nombre">
-                    <!-- required minlength="4" maxlength="12" #nombre="ngModel"> -->
-                    <!-- <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                    <input type="text" class="form-control" [(ngModel)]="cliente.nombre" name="nombre" required minlength="4" maxlength="12" #nombre="ngModel">
+                    <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
                         <div *ngIf="nombre['errors'].required">
                             El nombre es requerido
                         </div>
@@ -21,26 +20,24 @@
                         <div *ngIf="nombre['errors'].maxlength">
                             El nombre debe tener un tamaño máximo de 12 caracteres
                         </div>
-                    </div> -->
+                    </div>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="apellido" class="col-form-label col-sm-2">Apellido</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="cliente.apellido" name="apellido">
-                    <!-- required #apellido="ngModel">
+                    <input type="text" class="form-control" [(ngModel)]="cliente.apellido" name="apellido" required #apellido="ngModel">
                     <div class="alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
                         <div *ngIf="apellido['errors'].required">
                             El apellido es requerido
                         </div>
-                    </div> -->
+                    </div>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="email" class="col-form-label col-sm-2">Email</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="cliente.email" name="email">
-                    <!-- required email #email="ngModel">
+                    <input type="text" class="form-control" [(ngModel)]="cliente.email" name="email" required email #email="ngModel">
                     <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
                         <div *ngIf="email['errors'].required">
                             El email es requerido
@@ -48,16 +45,14 @@
                         <div *ngIf="email['errors'].email">
                             El email no tiene un formato válido
                         </div>
-                    </div> -->
+                    </div>
                 </div>
             </div>
 
             <div class="form-group row">
-                <div class="col-sm-6"><button class="btn btn-primary" role="button" (click)="create()" *ngIf="!cliente.id else elseBlock">Crear</button></div>
-                <!-- [disabled]="!clienteForm['form'].valid" -->
+                <div class="col-sm-6"><button class="btn btn-primary" role="button" (click)="create()" *ngIf="!cliente.id else elseBlock" [disabled]="!clienteForm['form'].valid">Crear</button></div>
                 <ng-template #elseBlock>
-                    <button class="btn btn-primary" role="button" (click)="update()">Actualizar</button>
-                    <!-- [disabled]="!clienteForm['form'].valid" -->
+                    <button class="btn btn-primary" role="button" (click)="update()" [disabled]="!clienteForm['form'].valid">Actualizar</button>
                 </ng-template>
             </div>
         </form>
