@@ -2,10 +2,9 @@ import { Injectable } from '@angular/core';
 import { Cliente } from './cliente';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, tap } from 'rxjs/operators';
 import swal from 'sweetalert2';
 import { Router } from '@angular/router';
-import { formatDate, DatePipe } from '@angular/common';
 
 @Injectable()
 export class ClienteService {
@@ -18,7 +17,21 @@ export class ClienteService {
 
   getClientes(): Observable<Cliente[]> {
     return this.http.get(`${this.urlEndPoint}/api/clientes`).pipe(
-      map(response => response as Cliente[])
+      tap(response => {
+        const clientes = response as Cliente[];
+        console.log('ClienteService: Tap 1');
+        clientes.forEach( cliente => {
+          console.log(cliente.nombre);
+        });
+      }),
+      map(response => response as Cliente[]),
+      // El operador tap es un void, no retorna nada
+      tap(clientes => {
+        console.log('ClienteService: Tap 2');
+        clientes.forEach(cliente => {
+          console.log(cliente.nombre);
+        });
+      })
     );
   }
 
