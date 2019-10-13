@@ -27,8 +27,8 @@ export class ClienteService {
           // cliente.createAt = formatDate(cliente.createAt, 'dd/MM/yyyy', 'en-US');
 
           // Forma 2 para formatear la fecha
-          const datePipe = new DatePipe('en-US');
-          cliente.createAt = datePipe.transform(cliente.createAt, 'dd/MM/yyyy');
+          const datePipe = new DatePipe('es');
+          cliente.createAt = datePipe.transform(cliente.createAt, 'EEEE dd, MMMM yyyy');
 
           return cliente;
         });
